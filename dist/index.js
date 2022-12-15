@@ -9868,7 +9868,7 @@ async function run() {
     }
 
     core.info(`Request: ${JSON.stringify(request)}`)
-    core.info(`Token: ${secrets.TZKHAN_GITHUB_TOKEN}`)
+    core.info(`Token: ${inputs.token}`)
     const octokit = github.getOctokit(inputs.token);
     const response = await octokit.rest.pulls.update(request);
 
