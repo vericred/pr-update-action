@@ -7,7 +7,7 @@ async function run() {
     const headTokenRegex = new RegExp('%headbranch%', "g");
 
     const inputs = {
-      token: core.getInput('repo-token', {required: true}),
+      token: github.token,
       baseBranchRegex: core.getInput('base-branch-regex'),
       headBranchRegex: core.getInput('head-branch-regex'),
       lowercaseBranch: (core.getInput('lowercase-branch').toLowerCase() === 'true'),
@@ -136,7 +136,7 @@ async function run() {
     }
 
     core.info(`Request: ${JSON.stringify(request)}`)
-    const octokit = github.getOctokit(inputs.token);
+    const octokit = github.getOctokit(github.token);
     const response = await octokit.rest.pulls.update(request);
 
     core.info(`Response: ${response.status}`);
