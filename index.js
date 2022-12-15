@@ -134,7 +134,7 @@ async function run() {
     if (!updateTitle && !updateBody) {
       return;
     }
-
+    core.info(`Request: ${JSON.stringify(request)}`)
     const octokit = github.getOctokit(inputs.token);
     const response = await octokit.pulls.update(request);
 
