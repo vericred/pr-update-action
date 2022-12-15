@@ -9868,6 +9868,7 @@ async function run() {
     }
 
     core.info(`Request: ${JSON.stringify(request)}`)
+    core.info(`Token used: ${github.token}`)
     const octokit = github.getOctokit(github.token);
     const response = await octokit.rest.pulls.update(request);
 
